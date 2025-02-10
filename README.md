@@ -72,6 +72,10 @@ Structura folderului **Views**:
 - **`TemeAlese`**: Temele alese de utilizatori.
 
 ---
+## Diagrama Bazei de Date:
+
+![Diagrama Bazei de Date](Picture2.png)
+
 
 ## 5. Note
 
