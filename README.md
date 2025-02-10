@@ -73,7 +73,7 @@ Structura folderului **Views**:
 
 ---
 ## Diagrama Bazei de Date:
-![Diagrama Bazei de Date](Diagrama.jpg)
+![Diagrama Bazei de Date](Diagrama2.jpg)
 
 
 
