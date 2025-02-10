@@ -1,6 +1,6 @@
-# sistem-alegere-teme
+
 Aplicație web pentru gestionarea alegerii temelor de proiect de către studenți.
-# Proiect ASP.NET Core MVC
+# MyApp
 
 Acesta este un proiect de tip **ASP.NET Core MVC** care implementează modelul Model-View-Controller (MVC). Iată o descriere detaliată a structurii fișierelor și a bazei de date.
 
