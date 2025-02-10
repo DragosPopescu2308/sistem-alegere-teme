@@ -1,0 +1,140 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+
+@model MyApp.ViewModels.TemeViewModel
+@{
+
+    ViewData["Title"] = "Index";
+
+}
+
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 mx-auto">
+                @if (User.IsInRole("Profesor"))
+                {
+                    <h1 class="text-white text-center">Panoul profesorului</h1>
+                    <h6 class="text-center text-white">panoul pentru vizualizare/editare/stergere teme</h6>
+                    <br />
+                    <div class="d-flex justify-content-center">
+                        <a href="#teme" class="btn btn-light btn-lg">Vezi temele</a>
+                        <a asp-area="" asp-controller="Teme" asp-action="Create" class="btn btn-outline-light btn-lg" style="margin-left: 1rem!important">Adauga Tema</a>
+                    </div>
+                }
+                else
+                {
+                    <h1 class="text-white text-center">Panoul elevului</h1>
+                    <h6 class="text-center text-white">panoul pentru vizualizarea si alegerea temelor</h6>
+                    <br />
+                    <div class="d-flex justify-content-center">
+                        <a href="#teme" class="btn btn-light btn-lg">Vezi temele</a>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="teme" class="py-5">
+    <div class="container">
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#teme_disponibile">Teme disponibile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#teme_alese">Teme alese</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="teme_disponibile" class="container tab-pane active">
+                <div class="row">
+                    @{
+                        int counter = 1;
+                    }
+                    @foreach (var item in Model.TemeDisponibile)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="content">
+                                    @if (counter < 10)
+                                    {
+                                        <h2>@("0" + counter.ToString())</h2>
+                                    }
+                                    else
+                                    {
+                                        <h2>@counter</h2>
+                                    }
+                                    <h4>@item.Titlu</h4>
+                                    <p>Descriere: @item.Descriere</p>
+                                    <p>Termen Limita: @item.Termen saptamani</p>
+                                    <p>Nivel de dificultate: @item.DificultyLevel?.Name</p>
+                                    @if (User.IsInRole("Profesor"))
+                                    {
+                                        <div class="d-flex justify-content-between">
+                                            <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a class="btn btn-danger btn-sm" asp-action="delete" asp-route-id="@item.Id">Delete</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex justify-content-between">
+                                            <a class="btn btn-primary btn-sm" asp-action="AlegereTema" asp-route-id="@item.Id">Alegere tema</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        counter++;
+                    }
+                </div>
+            </div>
+            <div id="teme_alese" class="container tab-pane fade">
+                @if (Model.TemeAlese != null && Model.TemeAlese.Any())
+                {
+                    <div class="row">
+                        @{
+                            int counter2 = 1;
+                        }
+                        @foreach (var temaAleasa in Model.TemeAlese)
+                        {
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="content">
+                                        @if (counter2 < 10)
+                                        {
+                                            <h2>@("0" + counter2.ToString())</h2>
+                                        }
+                                        else
+                                        {
+                                            <h2>@counter2</h2>
+                                        }
+                                        <h4>@temaAleasa.Tema?.Titlu</h4>
+                                        <p>Descriere: @temaAleasa.Tema?.Descriere</p>
+                                        <p>Termen Limita: @temaAleasa.Tema?.Termen saptamani</p>
+                                        <p>Nivel de dificultate: @temaAleasa.Tema?.DificultyLevel?.Name</p>
+                                        @if (User.IsInRole("Profesor"))
+                                        {
+                                            <p>Aleasă de: @temaAleasa.UserEmail</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            counter2++;
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center">Nu ai selectat încă nicio temă.</p>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>

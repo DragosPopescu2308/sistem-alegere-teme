@@ -1,0 +1,65 @@
+﻿@using MyApp.ViewModels;
+@model LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center">Login</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="featured-section" style="background-color: transparent;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                <div class="custom-block bg-light shadow-lg">
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="float-end">
+                            <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">
+                                Forgot password?
+                            </a>
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input asp-for="RememberMe" class="form-check-input" />
+                                @Html.DisplayNameFor(a => a.RememberMe)
+                            </label>
+                        </div>
+                        <input type="submit" value="Login" class="btn btn-success w-100 p-2" />
+                        <p class="text-center mt-2">
+                            Don't have an account? <a asp-controller="Account" asp-action="Register" class="text-decoration-none">Register</a>
+                        </p>
+                        <div class="text-center">
+                            <a asp-controller="Home" asp-action="Index" class="text-decoration-none mt-3">Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

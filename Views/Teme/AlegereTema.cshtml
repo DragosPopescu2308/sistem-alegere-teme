@@ -1,0 +1,29 @@
+﻿@model MyApp.Models.TemaAleasa
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center">Alege o tema</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured-section" style="background-color: transparent;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                <div class="custom-block bg-light shadow-lg">
+                    <form asp-action="AlegereTema" method="post">
+                        <input type="hidden" class="form-control" asp-for="UserEmail" value="@User.Identity.Name" />
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

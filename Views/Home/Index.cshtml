@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center">Digitalizare sarcini de lucru</h1>
+
+                <h6 class="text-center text-white">platforma speciala pentru alegerea temelor de catre studenti</h6>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="featured-section">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                <div class="custom-block bg-white shadow-lg">
+                    <a asp-area="" asp-controller="Teme" asp-action="Index">
+                        <div class="d-flex">
+                            <div>
+                                <h5 class="mb-2">Alegere Teme</h5>
+
+                                <p class="mb-0">Profesorii vor adauga diverse teme pe platforma, iar elevii pot alege temele pentru a le putea rezolva.</p>
+                            </div>
+                        </div>
+
+                        <img src="~/images/undraw_process_7lkc.png" class="custom-block-image img-fluid" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-12">
+                <div class="custom-block custom-block-overlay">
+                    <div class="d-flex flex-column h-100">
+                        <img src="~/images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="">
+
+                        <div class="custom-block-overlay-text d-flex">
+                            <div>
+                                <h5 class="text-white mb-2">Productivitate</h5>
+
+                                <p class="text-white">Prin adoptarea unor noi modalitati de acordare a temelor, respectiv evaluare a acestora, productivitatea poate creste considerabil in randul studentilor.</p>
+                                <br />
+                                <p class ="text-white"><b>Prin această abordare modernă, atât elevii, cât și profesorii beneficiază de un sistem mai clar, mai transparent și mai eficient, contribuind astfel la un proces educațional optimizat și orientat spre performanță.</b></p>
+                            </div>
+                        </div>
+
+                        <div class="section-overlay"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

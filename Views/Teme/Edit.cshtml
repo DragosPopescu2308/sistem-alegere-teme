@@ -1,0 +1,45 @@
+﻿@model MyApp.Models.Item
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center">Editeaza o tema</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured-section" style="background-color: transparent;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                <div class="custom-block bg-light shadow-lg">    
+                    <form asp-action="Edit" method="post">
+                        <div class="form-group">
+                            <label for="Titlu">Titlu</label>
+                            <input type="text" class="form-control" asp-for="Titlu" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Descriere">Descriere</label>
+                            <input type="text" class="form-control" asp-for="Descriere" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Termen">Termen</label>
+                            <input type="number" class="form-control" asp-for="Termen" />
+                        </div>
+                        <div class="form-group">
+                            <label for="DificultyLevelId">DificultyLevel</label>
+                            <select asp-for="DificultyLevelId" asp-items="ViewBag.DificultyLevels" class="form-control"></select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
