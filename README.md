@@ -74,7 +74,7 @@ Structura folderului **Views**:
 ---
 ## Diagrama Bazei de Date:
 
-![Diagrama Bazei de Date](Picture2.png)
+
 
 
 ## 5. Note
